@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parts of Speech tagger</title>
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	<style>
+		h1 {text-align: center;}
+		table, th, thead, td, tbody,tr{text-align: center;}
+		div {text-align: center;}
+		body{
+		background-color:  #faf1e6;	
+		}
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+	</style>
+
+    </head>
+    <body>
+
+
+<div class="container">
+
+
+  <h1>Parts of Speech Tagger</h1>
+  <form  action="/tag" method="post" role="form">
+
+    <div class="form-group">
+      <style="font-size:30px" label for="sentence">Enter Sentence:</label>
+      <input type="text" class="form-control" id="sentence" name="sentence" placeholder="Hindi Sentence">
+      <br>
+
+
+	<br>
+
+    </div>
+    <button type="submit" class="btn btn-success">Tag POS</button>
+  </form>
+    {% if output %}
+<h2 text-align: center>Output</h2>
+<table class="center">
+  <thead>
+    <tr>
+      <th scope="col">Sr.No</th>
+      <th scope="col">Word</th>
+      <th scope="col">Parts of Speech</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for i in range(output.taggedOutput.shape[0]) %}
+<tr>
+<td>{{i+1}}</td>
+<td>{{output.taggedOutput[i][0]}}</td>
+<td>{{output.taggedOutput[i][1]}}</td>
+</tr>
+{% endfor%}
+
+  </tbody>
+</table>
+<br>
+ {{ taggedOutput }}
+  <br>
+    {% endif %}
+  <br>
+</div>
+<br>
+</div>
+</div>
+</body>
+</html>
